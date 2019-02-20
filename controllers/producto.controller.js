@@ -134,6 +134,7 @@ function crearProducto(req, res) {
 
 
 function getProductos(req, res) {
+	console.log("si entra al backend");
     Producto.find({}).populate({
         path: 'userId'
     }).exec((err, productos) => {
