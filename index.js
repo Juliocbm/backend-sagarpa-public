@@ -14,7 +14,7 @@ var mensajes = [{
 
 mongoose.Promise = global.Promise;
 //Conexión a la base de datos
-mongoose.connect('mongodb://localhost:27017/SagarpaDB',{useNewUrlParser:true})
+mongoose.connect('mongodb://juliocbm500:YeVfhj555ybymmPc@cluster0-shard-00-00-e8zdp.mongodb.net:27017,cluster0-shard-00-01-e8zdp.mongodb.net:27017,cluster0-shard-00-02-e8zdp.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true',{useNewUrlParser:true})
 	.then(() =>{	
 		//Si se conecta exitosamente mostramos un mensaje de exito.
 		console.log('La conexión a la base de datos SagarpaDB se ha realizado correctamente...');
