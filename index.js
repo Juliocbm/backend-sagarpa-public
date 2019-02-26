@@ -39,7 +39,7 @@ mongoose.connect('mongodb://juliocbm500:YeVfhj555ybymmPc@cluster0-shard-00-00-e8
 
 
 		http.listen(port, () => {
-			console.log("El servidor local con Node y Express esta corriendo correctamente...");
+			console.log("El servidor local con Node y Express esta corriendo correctamente en el puerto -> "+port);
 		});
 	})
 	//cachamos el error cuando exista...
