@@ -168,45 +168,10 @@ function getImageFile(req, res) {
 
 
 
-function a(params, callback) {
-
-    let size2 = params.imagen.length;
-
-    params.imagen.forEach(
-
-        function (imagen, index) {
-
-            var size = imagen.length;
-            var imagen = imagen.substring(23, size);
-
-            var nombrearchivo = Math.random().toString() + ".jpg";
-
-            fs.writeFile("public/uploadsNot/" + nombrearchivo, imagen, 'base64', (error) => {
-
-                array[index] = nombrearchivo;
-
-                if (index == size2 - 1) {
-                    console.log(array);
-                    callback();
-
-
-                }
-
-            });
-
-        }
-    );
 
 
 
 
-
-
-}
-
-
-
-var array = [];
 
 //FUNCIÓN PARA DAR DE ALTA NUEVAS NOTICIAS
 function crearNoticia(req, res) {
@@ -224,39 +189,28 @@ function crearNoticia(req, res) {
 		noticia.relevancia = params.relevancia;
 		noticia.fecha_reg = params.fecha_reg;
 		noticia.status = true;
+		noticia.imagen = params.imagen;
 
 
 
 
 
-		a(params, function () {
-
-
-			array.forEach(function (img) {
-				noticia.imagen.push(img);
-
-			});
-
-			//producto.image=array.slice();
-
-
-			console.log("entro a callback");
 
 
 
 			noticia.save((err, noticiaStored) => {
 				if (err) {
-					array = [];
+					
 					res.status(500).send({
 						message: 'Error al guardar la noticia.'
 					});
 				} else if (!noticiaStored) {
-					array = [];
+					
 					res.status(404).send({
 						message: 'No se ha registrado la noticia.'
 					});
 				} else {
-					array = [];
+					
 					res.status(200).send({
 						noticia: noticiaStored
 					});
@@ -268,8 +222,7 @@ function crearNoticia(req, res) {
 
 
 
-		});
-
+		
 
 
 

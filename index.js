@@ -2,7 +2,7 @@
 
 var mongoose = require('mongoose');
 var app = require('./app');
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 3000;
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var io_functions = require('./sockets/socket');
@@ -14,6 +14,8 @@ var mensajes = [{
 
 mongoose.Promise = global.Promise;
 //Conexión a la base de datos
+
+//mongoose.connect('mongodb://localhost:27017/SagarpaDB',{useNewUrlParser:true})
 mongoose.connect('mongodb://juliocbm500:YeVfhj555ybymmPc@cluster0-shard-00-00-e8zdp.mongodb.net:27017,cluster0-shard-00-01-e8zdp.mongodb.net:27017,cluster0-shard-00-02-e8zdp.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true',{useNewUrlParser:true})
 	.then(() =>{	
 		//Si se conecta exitosamente mostramos un mensaje de exito.
@@ -30,10 +32,14 @@ mongoose.connect('mongodb://juliocbm500:YeVfhj555ybymmPc@cluster0-shard-00-00-e8
 		  //FUNCION QUE MANDA MENSAJES
 		  io_functions.mensaje(cliente,io);
 
+		  //FUNCION QUE MANDA MENSAJES
+		  io_functions.addSalaPrivada(cliente);
+
 		});
 
+
 		http.listen(port, () => {
-			console.log("El servidor local con Node y Express estan escuchando en el puerto => " + port);
+			console.log("El servidor local con Node y Express esta corriendo correctamente...");
 		});
 	})
 	//cachamos el error cuando exista...

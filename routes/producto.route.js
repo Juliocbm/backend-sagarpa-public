@@ -28,7 +28,7 @@ api.post('/upload-image-producto/:id',[md_auth.ensureAuth,md_upload],
 									ProductoController.uploadImage);	//SUBIR IMAGEN
 
 //DELETE
-api.delete('/del-prod/:id',md_auth.ensureAuth ,ProductoController.deleteProducto);//OBTENER TODOS LOS PRODUCTO
+api.delete('/del-prod/:id',ProductoController.deleteProducto);//OBTENER TODOS LOS PRODUCTO
 
 
 	/* 								
