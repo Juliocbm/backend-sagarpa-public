@@ -66,7 +66,7 @@ function saveUser(req,res){
 		user.municipio = params.municipio;
 		user.localidad = params.localidad;
 		user.sector = params.sector;
-		user.image = 'null.jpg';
+		user.image = params.image;
 
 		User.findOne({email:user.email}, (err,userFind) => {
 			if(err){
